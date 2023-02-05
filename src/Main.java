@@ -37,6 +37,8 @@ public class Main {
         System.out.println();
     }
 
+    /*
+     * */
     public static void task2() {
     /*
     *Если год выпуска ранее 2015 года, то к сообщению об установке
@@ -50,23 +52,22 @@ public class Main {
         int osAndroid = 1;
         int osIos = 0;
         int clientDeviceYear = 2015;
-        int newVersionOS = 2015;
-        if (clientDeviceYear >= newVersionOS) {
-            if (clientOS == osAndroid) {
+        int newVersionOS = 2010;
+        if (clientOS == osAndroid) {
+            if (newVersionOS >= clientDeviceYear) {
                 System.out.println("Установите версию приложения для Android по ссылке");
-            } else if (clientOS == osIos) {
-                System.out.println("Установите версию приложения для iOS по ссылке");
             } else {
-                System.out.println("введена неверная комбинация клавиш");
+                System.out.println("Установите облегченную версию приложения для Android по ссылкее");
             }
-        } else if (clientOS == osAndroid) {
-            System.out.println("Установите облегченную версию для Android по ссылке");
-        } else if (clientOS == osIos) {
-            System.out.println("Установите облегченную версию приложения для iOS по ссылке");
-        } else {
-            System.out.println("введена неверная комбинация клавиш");
         }
-        System.out.println();
+        if (clientOS == osIos) {
+            if (newVersionOS >= clientDeviceYear) {
+                System.out.println("Установите  версию приложения для iOS по ссылке");
+            } else {
+                System.out.println("Установите облегченную версию для iOS по ссылке");
+            }
+            System.out.println();
+        }
     }
 
     public static void task3() {
@@ -79,21 +80,19 @@ public class Main {
       Небольшая справка: високосным является каждый четвертый год,
        но не является каждый сотый. Также високосным является каждый четырехсотый год.
      */
-        int year = 2021;
+        int year = 800;
         int forYears = 4;
         int onehandredYears = 100;
         int fourHundredYaers = 400;
-        if (((year / fourHundredYaers) * fourHundredYaers) == year) {
-            System.out.println("Високостный");
-        } else if (((year / onehandredYears) * onehandredYears) == year) {
-            System.out.println("Не Високостный");
-        } else if (((year / forYears) * forYears) == year) {
-            System.out.println("Високостный");
+        if ((year % forYears == 0 && year % onehandredYears != 0) || year % fourHundredYaers == 0) {
+            System.out.println(year + " являеться високостным");
         } else {
-            System.out.println("Не Високостный");
+            System.out.println(year + " не являеться високостным");
         }
+
         System.out.println();
     }
+
 
     public static void task4() {
     /*
@@ -110,21 +109,20 @@ public class Main {
         int distanceOne = 20;
         int distanceTwo = 60;
         int distanceTree = 100;
-        if (deliveryDistance <= distanceOne) {
-            System.out.println("Потребуется дней " + deliveryDays);
-        } else if (deliveryDistance <= distanceTwo) {
-            deliveryDays = deliveryDays + 1;
-            System.out.println("Потребуется дней " + deliveryDays);
-        } else if (deliveryDistance <= distanceTree) {
-            deliveryDays = deliveryDays + 2;
-            System.out.println("Потребуется дней " + deliveryDays);
-        } else {
+        if (deliveryDistance > distanceTree) {
             System.out.println("Свыше 100 км доставки нет");
+        } else {
+            if (deliveryDistance > distanceOne) {
+                deliveryDays++;
+            }
+            if (deliveryDistance > distanceTwo) {
+                deliveryDays++;
+            }
+            System.out.println("Потребуется " + deliveryDays+" дня(ей)");
+            System.out.println();
         }
-        System.out.println();
     }
-
-    public static void task5() {
+        public static void task5 () {
         /*
         Напишите программу, которая определяет по номеру месяца в году,
         к какому сезону этот месяц принадлежит.
@@ -132,47 +130,31 @@ public class Main {
         Для обозначения номера месяца используйте переменную monthNumber = 12.
         Пропишите условие, при котором программа не будет выполняться (номер месяца больше 13).
         * */
-        int monthNmber = 15;
-        switch (monthNmber){
-            case 1:
-                System.out.printf("Это зимний месяц");
-                break;
-            case 2:
-                System.out.printf("Это зимний месяц");
-                break;
-            case 3:
-                System.out.printf("Это весенний месяц");
-                break;
-            case 4:
-                System.out.printf("Это весенний месяц");
-                break;
-            case 5:
-                System.out.printf("Это весенний месяц");
-                break;
-            case 6:
-                System.out.printf("Это летний месяц");
-                break;
-            case 7:
-                System.out.printf("Это летний месяц");
-                break;
-            case 8:
-                System.out.printf("Это летний месяц");
-                break;
-            case 9:
-                System.out.printf("Это осенний месяц");
-                break;
-            case 10:
-                System.out.printf("Это осенний месяц");
-                break;
-            case 11:
-                System.out.printf("Это осенний месяц");
-                break;
-            case 12:
-                System.out.printf("Это зимний месяц");
-                break;
-            default:
-                System.out.println("Вы ввели неправильный номер месяца");
+            int monthNmber = 10;
+            switch (monthNmber) {
+                case 12:
+                case 1:
+                case 2:
+                    System.out.printf("Это зимний месяц");
+                    break;
+                case 3:
+                case 4:
+                case 5:
+                    System.out.printf("Это весенний месяц");
+                    break;
+                case 6:
+                case 7:
+                case 8:
+                    System.out.printf("Это летний месяц");
+                    break;
+                case 9:
+                case 10:
+                case 11:
+                    System.out.printf("Это осенний месяц");
+                    break;
+                default:
+                    System.out.println("Вы ввели неправильный номер месяца");
+            }
         }
-    }
 
-}
+    }
